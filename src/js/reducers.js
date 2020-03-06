@@ -29,7 +29,8 @@ export default function reducers (state = defaultState, action) {
         return {
           ...state,
           movieInfo: [...state.movieInfo,
-            payload.data]
+            payload.data.search
+          ]
         };
       }
       case MOVIE_SEARCH_REJECTED: {
