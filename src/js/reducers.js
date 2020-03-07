@@ -1,7 +1,7 @@
 import {
   MOVIE_QUERY,
   MOVIE_SEARCH_PENDING,
-  MOVIE_SEARCH_SUCCESS,
+  MOVIE_SEARCH_FULFILLED,
   MOVIE_SEARCH_REJECTED
 } from './constants';
 
@@ -16,8 +16,8 @@ export default function reducers (state = defaultState, action) {
   switch (type) {
       case MOVIE_QUERY: {
         return {
-            ...state,
-            inputValue: payload,
+          ...state,
+          inputValue: payload,
         };
         }
       case MOVIE_SEARCH_PENDING: {
@@ -25,13 +25,11 @@ export default function reducers (state = defaultState, action) {
           ...state,
         };
       }
-      case MOVIE_SEARCH_SUCCESS: {
+      case MOVIE_SEARCH_FULFILLED: {
         return {
           ...state,
-          movieInfo: [...state.movieInfo,
-            payload.data.search
-          ]
-        };
+          movieInfo: payload.data,
+        }
       }
       case MOVIE_SEARCH_REJECTED: {
         return {
